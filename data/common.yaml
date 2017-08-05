@@ -1,0 +1,5 @@
+corp104_rvm::http_proxy: ~
+corp104_rvm::dependencie_package:
+  - 'software-properties-common'
+corp104_rvm::ppa: 'rael-gc/rvm'
+corp104_rvm::package_name: 'rvm'
