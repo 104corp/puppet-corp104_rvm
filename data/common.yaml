@@ -1,4 +1,10 @@
 corp104_rvm::http_proxy: ~
+corp104_rvm::rvm_script_url: 'https://get.rvm.io'
+corp104_rvm::rvm_install_tmp: '/tmp/rvm_install.sh'
+corp104_rvm::gpg_key: '409B6B1796C275462A1703113804BB82D39DC0E3'
+corp104_rvm::rvm_profile: '/etc/profile.d/rvm.sh'
+corp104_rvm::ruby_version: '2.3'
+corp104_rvm::set_default: true
 corp104_rvm::dependencie_package:
   - 'software-properties-common'
 corp104_rvm::ppa: 'rael-gc/rvm'

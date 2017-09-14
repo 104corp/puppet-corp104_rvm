@@ -32,12 +32,19 @@ All parameters for the ntp module are contained within the main `::corp104_rvm` 
 include '::corp104_rvm'
 ```
 
+### Change ruby version
+
+```puppet
+class { 'corp104_rvm':
+  ruby_version => '2.4',
+}
+```
+
 ### Download repository package to Use a Proxy
 
 ```puppet
 class { 'corp104_rvm':
   http_proxy         => 'http://change.proxy.com:3128',
-  http_proxy_timeout => 60,
 }
 ```
 
@@ -51,9 +58,8 @@ class { 'corp104_rvm':
 
 #### Private classes
 
-* corp104_rvm::install: Handles the packages.
-* corp104_rvm::config: Handles the config.
-* corp104_rvm::service: Handles the config.
+* corp104_rvm::install Handles the packages.
+* corp104_rvm::install::ruby Handles the install ruby.
 
 ## Limitations
 

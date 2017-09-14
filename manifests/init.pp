@@ -47,10 +47,16 @@ class corp104_rvm (
   Array $dependencie_package,
   String $ppa,
   String $package_name,
+  String $gpg_key,
+  String $rvm_script_url,
+  String $rvm_install_tmp,
+  String $rvm_profile,
+  String $ruby_version,
+  Boolean $set_default,
 ){
   contain corp104_rvm::install
-  contain corp104_rvm::config
+  contain corp104_rvm::install::ruby
 
   Class['::corp104_rvm::install']
-  ~> Class['::corp104_rvm::config']
+  -> Class['::corp104_rvm::install::ruby']
 }

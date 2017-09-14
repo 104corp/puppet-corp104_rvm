@@ -1,1 +1,0 @@
-corp104_puppet_agent::package_provider: 'dpkg'
