@@ -1,9 +1,10 @@
-class corp104_rvm::install::ubuntu inherits corp104_rvm {
+class corp104_rvm::install::redhat inherits corp104_rvm {
+
   Exec { path => '/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/rvm/bin' }
 
-  exec { 'import-gpg-key':
-    command => "/usr/bin/gpg --recv-keys ${corp104_rvm::gpg_key}",
-    unless  => '/usr/bin/gpg --list-keys | grep RVM',
+  exec { 'import-gpg2-key':
+    command => "/usr/bin/gpg2 --recv-keys ${corp104_rvm::gpg_key}",
+    unless  => '/usr/bin/gpg2 --list-keys | grep RVM',
   }
 
   if $corp104_rvm::http_proxy {
@@ -29,5 +30,4 @@ class corp104_rvm::install::ubuntu inherits corp104_rvm {
       notify   => Class['corp104_rvm::install::ruby'],
     }
   }
-
 }
