@@ -1,3 +1,7 @@
+## 2017-09-18 - Release 1.1.0
+
+  - modify Global install.
+
 ## 2017-09-14 - Release 1.0.0
 
   - support CentOS.
