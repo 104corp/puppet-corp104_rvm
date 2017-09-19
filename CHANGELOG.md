@@ -1,3 +1,7 @@
+## 2017-09-19 - Release 1.1.1
+
+  - fix Ubuntu16.04 run rvm.
+
 ## 2017-09-18 - Release 1.1.0
 
   - modify Global install.
