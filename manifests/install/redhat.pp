@@ -1,6 +1,6 @@
 class corp104_rvm::install::redhat inherits corp104_rvm {
 
-  Exec { path => '/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/rvm/bin' }
+  Exec { path => '/sbin:/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/rvm/bin' }
 
   exec { 'import-gpg2-key':
     command => "/usr/bin/gpg2 --recv-keys ${corp104_rvm::gpg_key}",

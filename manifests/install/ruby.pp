@@ -1,5 +1,5 @@
 class corp104_rvm::install::ruby inherits corp104_rvm {
-  Exec { path => '/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/rvm/bin' }
+  Exec { path => '/sbin:/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/rvm/bin' }
 
   if $corp104_rvm::http_proxy {
     exec { 'install-ruby':
