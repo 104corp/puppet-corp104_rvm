@@ -15,10 +15,13 @@ class corp104_rvm::install::ubuntu inherits corp104_rvm {
       unless   => 'which rvm',
     }
     exec { 'install-rvm':
-      provider => 'shell',
-      command  => "export ${corp104_rvm::http_proxy} ＼
-                   && bash -s stable ${corp104_rvm::rvm_install_tmp}",
-      unless   => 'which rvm',
+      provider    => 'shell',
+      environment => [
+        "http_proxy=${corp104_rvm::http_proxy}",
+        "https_proxy=${corp104_rvm::http_proxy}",
+      ],
+      command     => "bash -s stable ${corp104_rvm::rvm_install_tmp}",
+      unless      => 'which rvm',
     }
   }
   else {

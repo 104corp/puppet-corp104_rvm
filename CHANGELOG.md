@@ -1,3 +1,7 @@
+## 2017-09-21 - Release 1.1.2
+
+  - fix proxy mode.
+
 ## 2017-09-19 - Release 1.1.1
 
   - fix Ubuntu16.04 run rvm.

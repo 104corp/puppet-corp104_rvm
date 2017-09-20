@@ -3,17 +3,20 @@ class corp104_rvm::install::ruby inherits corp104_rvm {
 
   if $corp104_rvm::http_proxy {
     exec { 'install-ruby':
-      command => "export ${corp104_rvm::http_proxy} \
-                  && /bin/bash rvm install ${corp104_rvm::ruby_version} \
-                  && rvm alias create default ${corp104_rvm::ruby_version}",
-      unless  => "/bin/bash -c '. ${corp104_rvm::rvm_profile} && which ruby'",
-      require => Class['corp104_rvm::install'],
+      environment => [
+        "http_proxy=${corp104_rvm::http_proxy}",
+        "https_proxy=${corp104_rvm::http_proxy}",
+      ],
+      command     => "/bin/bash rvm install ${corp104_rvm::ruby_version} \
+                     && rvm alias create default ${corp104_rvm::ruby_version}",
+      unless      => "/bin/bash -c '. ${corp104_rvm::rvm_profile} && which ruby'",
+      require     => Class['corp104_rvm::install'],
     }
   }
   else {
     exec { 'install-ruby':
       command => "/bin/bash rvm install ${corp104_rvm::ruby_version} \
-                  && rvm alias create default ${corp104_rvm::ruby_version}",
+                 && rvm alias create default ${corp104_rvm::ruby_version}",
       unless  => "/bin/bash -c '. ${corp104_rvm::rvm_profile} && which ruby'",
       require => Class['corp104_rvm::install'],
     }
