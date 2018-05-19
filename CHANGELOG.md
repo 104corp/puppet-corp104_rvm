@@ -1,3 +1,7 @@
+## 2018-05-20 - Release 1.1.3
+
+  - fix project repository.
+
 ## 2017-09-21 - Release 1.1.2
 
   - fix proxy mode.
