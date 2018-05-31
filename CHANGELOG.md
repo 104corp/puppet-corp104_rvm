@@ -1,3 +1,7 @@
+## 2018-05-31 - Release 1.1.4
+
+  - fix metadata summary.
+
 ## 2018-05-20 - Release 1.1.3
 
   - fix project repository.
