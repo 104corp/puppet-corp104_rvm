@@ -7,8 +7,8 @@ class corp104_rvm::install::redhat inherits corp104_rvm {
       "http_proxy=${corp104_rvm::http_proxy}",
       "https_proxy=${corp104_rvm::http_proxy}",
     ],
-    command => 'curl -sSL https://rvm.io/mpapis.asc | sudo gpg2 --import -',
-    unless  => '/usr/bin/gpg2 --list-keys | grep RVM',
+    command     => 'curl -sSL https://rvm.io/mpapis.asc | sudo gpg2 --import -',
+    unless      => '/usr/bin/gpg2 --list-keys | grep RVM',
   }
 
   if $corp104_rvm::http_proxy {

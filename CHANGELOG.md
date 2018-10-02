@@ -1,3 +1,7 @@
+## 2018-10-02 - Release 1.2.0
+
+  - bugfix CentOS install rvm.
+
 ## 2018-05-31 - Release 1.1.4
 
   - fix metadata summary.
