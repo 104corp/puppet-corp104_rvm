@@ -4,16 +4,25 @@ class corp104_rvm::install::redhat inherits corp104_rvm {
 
   package { 'gnupg2':
     ensure => present,
-    before => Exec['import-gpg-key'],
+    before => [ Exec['import-mpapis-gpg-key'], Exec['import-pkuczynski-gpg-key'] ],
   }
 
-  exec { 'import-gpg-key':
+  exec { 'import-mpapis-gpg-key':
     environment => [
       "http_proxy=${corp104_rvm::http_proxy}",
       "https_proxy=${corp104_rvm::http_proxy}",
     ],
     command     => 'curl -sSL https://rvm.io/mpapis.asc | sudo gpg2 --import -',
     unless      => '/usr/bin/gpg2 --list-keys | grep RVM',
+  }
+
+  exec { 'import-pkuczynski-gpg-key':
+    environment => [
+      "http_proxy=${corp104_rvm::http_proxy}",
+      "https_proxy=${corp104_rvm::http_proxy}",
+    ],
+    command     => 'curl -sSL https://rvm.io/pkuczynski.asc | sudo gpg2 --import -',
+    unless      => '/usr/bin/gpg2 --list-keys | grep Kuczynski',
   }
 
   if $corp104_rvm::http_proxy {
