@@ -1,7 +1,10 @@
 class corp104_rvm::install::ubuntu inherits corp104_rvm {
   Exec { path => '/sbin:/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/rvm/bin' }
 
-  package { 'gnupg2': ensure => present }
+  package { 'gnupg2':
+    ensure => present,
+    before => Exec['import-gpg-key'],
+  }
 
   exec { 'import-gpg-key':
     command => "/usr/bin/gpg2 --recv-keys ${corp104_rvm::gpg_key}",
