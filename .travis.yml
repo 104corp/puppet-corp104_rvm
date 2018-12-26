@@ -27,6 +27,12 @@ matrix:
     sudo: required
   - rvm: 2.3.4
     bundler_args: "--without system_tests"
-    env: PUPPET_GEM_VERSION="~> 5.0"
+    env: PUPPET_GEM_VERSION="~> 6.0"
 notifications:
   email: false
+  slack:
+    template:
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
+      - 'Commit message : %{commit_message}'
+    rooms:
+      secure: "NxcsSsCJy27cC5gKCAi6SGMTvLP2auoNLewiKklrV+dRAETr6KhBFdnMut6psAHEH5H+OwF644Y/T0Saff/w1uauCs7bzYgwH8qQOeKIS3QJg0SNg7PbddfwxQkUsxV8P06yvZuYlfk7Y3q2IMQ94dllmJ7OXd7kAhLAFi8yCQwLLq62dyXsul4cc4uzGJuaf41/QMbe30DLBuokYX1ZsoPeJzFzSPFae6JqUnH/gn7F+TbSo3Ak7TSSx+mEns3zcyabtqLUe3bTvrkTGV3IAzQVsFmI3Qwcb9Ofq1VQVou9iB54++8LRbU80LabjA0jUeSPcP6Nzzxzb00HE9If1CpAuf8Og/rZRWncakr2dZPD0qxPSOouL/j2i54giRzNoBGgl5U0mqZD5+LNc97ds6LVcI3CUt3+01a84pQl2QvEbUy7tqlGN7Gt0Isgq3p0NJKEi2A87wYG8c4pxk8VpGYd6m2MPLxJC/PAwasjdqa2Kk+QXVzMq/QjwA3ooG66i22r2vR5gNp88cOoTAs0H+2py7qJCv3p2lW7OhwAN/aWEevOa1DNLSXKZsG13oxzcSCSkvDw06LubLLZQT6a0HXe8hl1FaVX7Ap323Q+umkt3Mg6RtZwn6gUEbkglkPna8t21z+6X4RO0+/00GghEm8AtbLAVC9Ue6DrJJb+qvQ="
