@@ -12,7 +12,7 @@ class corp104_rvm::install::redhat inherits corp104_rvm {
       "http_proxy=${corp104_rvm::http_proxy}",
       "https_proxy=${corp104_rvm::http_proxy}",
     ],
-    command     => 'curl -sSL https://rvm.io/mpapis.asc | sudo gpg2 --import -',
+    command     => 'curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -',
     unless      => '/usr/bin/gpg2 --list-keys | grep RVM',
   }
 
@@ -21,7 +21,7 @@ class corp104_rvm::install::redhat inherits corp104_rvm {
       "http_proxy=${corp104_rvm::http_proxy}",
       "https_proxy=${corp104_rvm::http_proxy}",
     ],
-    command     => 'curl -sSL https://rvm.io/pkuczynski.asc | sudo gpg2 --import -',
+    command     => 'curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -',
     unless      => '/usr/bin/gpg2 --list-keys | grep Kuczynski',
   }
 
