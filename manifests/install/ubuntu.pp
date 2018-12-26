@@ -7,8 +7,12 @@ class corp104_rvm::install::ubuntu inherits corp104_rvm {
   }
 
   exec { 'import-gpg-key':
-    command => "/usr/bin/gpg2 --recv-keys ${corp104_rvm::gpg_key}",
-    unless  => '/usr/bin/gpg2 --list-keys | grep RVM',
+    environment => [
+      "http_proxy=${corp104_rvm::http_proxy}",
+      "https_proxy=${corp104_rvm::http_proxy}",
+    ],
+    command     => 'curl -sSL https://rvm.io/mpapis.asc | sudo gpg2 --import -',
+    unless      => '/usr/bin/gpg2 --list-keys | grep RVM',
   }
 
   if $corp104_rvm::http_proxy {

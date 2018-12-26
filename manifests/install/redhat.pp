@@ -2,7 +2,12 @@ class corp104_rvm::install::redhat inherits corp104_rvm {
 
   Exec { path => '/sbin:/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/rvm/bin' }
 
-  exec { 'import-gpg2-key':
+  package { 'gnupg2':
+    ensure => present,
+    before => Exec['import-gpg-key'],
+  }
+
+  exec { 'import-gpg-key':
     environment => [
       "http_proxy=${corp104_rvm::http_proxy}",
       "https_proxy=${corp104_rvm::http_proxy}",
