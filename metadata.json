@@ -1,7 +1,7 @@
 {
   "name": "104corp-corp104_rvm",
   "description": "corp104_rvm Module for Debian, Ubuntu, CentOS and RHEL.",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "author": "104corp",
   "summary": "Install, deploysm, and configures rvm.",
   "license": "Apache-2.0",

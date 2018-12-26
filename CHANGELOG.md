@@ -1,3 +1,7 @@
+## 2018-12-27 - Release 2.0.0
+
+  - fix import gpg key.
+
 ## 2018-10-02 - Release 1.2.0
 
   - bugfix CentOS install rvm.
