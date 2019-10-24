@@ -43,13 +43,31 @@ group :development do
 end
 
 group :system_tests do
-  gem "puppet-module-posix-system-r#{minor_version}",                            :require => false, :platforms => "ruby"
-  gem "puppet-module-win-system-r#{minor_version}",                              :require => false, :platforms => ["mswin", "mingw", "x64_mingw"]
-  gem "beaker", *location_for(ENV['BEAKER_VERSION'] || '>= 3')                  
-  gem "beaker-pe",                                                               :require => false
-  gem "beaker-rspec", *location_for(ENV['BEAKER_RSPEC_VERSION'])                
-  gem "beaker-hostgenerator", *location_for(ENV['BEAKER_HOSTGENERATOR_VERSION'])
-  gem "beaker-abs", *location_for(ENV['BEAKER_ABS_VERSION'] || '~> 0.1')        
+  gem 'winrm',                              :require => false
+  if beaker_version = ENV['BEAKER_VERSION']
+    gem 'beaker', *location_for(beaker_version)
+  else
+    gem 'beaker', '>= 4.2.0', :require => false
+  end
+  if beaker_rspec_version = ENV['BEAKER_RSPEC_VERSION']
+    gem 'beaker-rspec', *location_for(beaker_rspec_version)
+  else
+    gem 'beaker-rspec',  :require => false
+  end
+  gem 'serverspec',                         :require => false
+  gem 'beaker-hostgenerator', '>= 1.1.22',  :require => false
+  gem 'beaker-docker',                      :require => false
+  gem 'beaker-puppet',                      :require => false
+  gem 'beaker-puppet_install_helper',       :require => false
+  gem 'beaker-module_install_helper', :require => false
+
+  #gem "puppet-module-posix-system-r#{minor_version}",                            :require => false, :platforms => "ruby"
+  #gem "puppet-module-win-system-r#{minor_version}",                              :require => false, :platforms => ["mswin", "mingw", "x64_mingw"]
+  #gem "beaker", *location_for(ENV['BEAKER_VERSION'] || '>= 3')                  
+  #gem "beaker-pe",                                                               :require => false
+  #gem "beaker-rspec", *location_for(ENV['BEAKER_RSPEC_VERSION'])                
+  #gem "beaker-hostgenerator", *location_for(ENV['BEAKER_HOSTGENERATOR_VERSION'])
+  #gem "beaker-abs", *location_for(ENV['BEAKER_ABS_VERSION'] || '~> 0.1')        
 end
 
 gem 'puppet', *location_for(ENV['PUPPET_GEM_VERSION'])
